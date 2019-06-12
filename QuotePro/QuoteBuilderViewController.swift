@@ -70,9 +70,7 @@ class QuoteBuilderViewController: UIViewController {
   @objc func saveTapped(){
     print("save tapped")
     guard var newQuote = self.quote else{return}
-    print(newQuote)
     guard let myPhoto = self.photo else{return}
-    print(myPhoto)
     newQuote.photo = myPhoto.image
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate

@@ -42,7 +42,6 @@ class ViewController: UIViewController,QuoteBuilderDelegate{
     let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Quotes")
     do{
       quotes = try context.fetch(fetchRequest)
-      print(quotes.count)
       tableView.reloadData()
     }catch let error{
       print(error)
@@ -76,12 +75,16 @@ class ViewController: UIViewController,QuoteBuilderDelegate{
 
 extension ViewController:UITableViewDelegate{
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return UITableView.automaticDimension
+  return UITableView.automaticDimension
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let items = ["test"]
-    let uav = UIActivityViewController(activityItems: items, applicationActivities: nil)
+    let quote = quotes[indexPath.row]
+    let photoData = quote.value(forKey: "imageData") as? Data
+    guard let photo = photoData else{return}
+    let image = UIImage(data: photo)
+    let imageshare = [image!]
+    let uav = UIActivityViewController(activityItems: imageshare, applicationActivities: nil)
     self.present(uav, animated: true, completion: nil)
   }
 }
