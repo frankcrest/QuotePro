@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController,QuoteBuilderDelegate{
   
-  var quotes = [Quote]()
+  var quotes = [NSManagedObject]()
   
   let tableView:UITableView = {
     let tb = UITableView(frame: CGRect.zero, style: UITableView.Style.plain)
@@ -25,11 +26,27 @@ class ViewController: UIViewController,QuoteBuilderDelegate{
     let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
     return button
   }()
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
+    if let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.path {
+      print("Documents Directory: \(documentsPath)")
+    }
     setupViews()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
+    let context = appDelegate.persistentContainer.viewContext
+    let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Quotes")
+    do{
+      quotes = try context.fetch(fetchRequest)
+      print(quotes.count)
+      tableView.reloadData()
+    }catch let error{
+      print(error)
+    }
   }
   
   func setupViews(){
@@ -77,13 +94,13 @@ extension ViewController:UITableViewDataSource{
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomCell
     let quote = quotes[indexPath.row]
-    cell.nameLabel.text = quote.quoteAuthor
-    cell.quoteLabel.text = quote.quoteText
+    cell.nameLabel.text = quote.value(forKeyPath: "author") as? String
+    cell.quoteLabel.text = quote.value(forKeyPath: "quote") as? String
     return cell
   }
   
   func saveQuote(quote: Quote) {
-    self.quotes.append(quote)
+    //self.quotes.append(quote)
     tableView.reloadData()
   }
   

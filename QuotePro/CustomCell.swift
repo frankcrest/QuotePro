@@ -41,12 +41,12 @@ class CustomCell: UITableViewCell {
     NSLayoutConstraint.activate([
       nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
       nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4),
-      nameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 4),
+      nameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
       nameLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 16),
       
       quoteLabel.topAnchor.constraint(equalTo: self.nameLabel.bottomAnchor, constant: 4),
       quoteLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4),
-      quoteLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 4),
+      quoteLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
       quoteLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4),
       quoteLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 14),
       ])

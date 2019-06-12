@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 protocol QuoteBuilderDelegate {
-  func saveQuote(quote:Quote)
+  //func saveQuote(quote:Quote)
 }
 
 class QuoteBuilderViewController: UIViewController {
@@ -42,8 +43,10 @@ class QuoteBuilderViewController: UIViewController {
     return view
   }()
   
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     self.view.isUserInteractionEnabled = true
     setupViews()
   }
@@ -66,12 +69,27 @@ class QuoteBuilderViewController: UIViewController {
   
   @objc func saveTapped(){
     print("save tapped")
-    guard var newQuote = quote else{return}
+    guard var newQuote = self.quote else{return}
     print(newQuote)
-    guard let myPhoto = photo else{return}
+    guard let myPhoto = self.photo else{return}
     print(myPhoto)
     newQuote.photo = myPhoto.image
-    delegate?.saveQuote(quote: newQuote)
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let context = appDelegate.persistentContainer.viewContext
+    let entity = NSEntityDescription.entity(forEntityName: "Quotes", in: context)!
+    let quote = NSManagedObject(entity: entity, insertInto: context)
+    quote.setValue(newQuote.quoteAuthor, forKey: "author")
+    quote.setValue(newQuote.quoteText, forKey: "quote")
+    quote.setValue(newQuote.photo, forKey: "imageData")
+    
+    do {
+      try context.save()
+    }catch let error{
+      print(error)
+    }
+    
+    //delegate?.saveQuote(quote: newQuote)
     self.navigationController?.popViewController(animated: true)
   }
   
