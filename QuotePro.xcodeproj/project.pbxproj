@@ -12,6 +12,12 @@
 		E966649722B15610004A23B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E966649522B15610004A23B6 /* Main.storyboard */; };
 		E966649922B15612004A23B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E966649822B15612004A23B6 /* Assets.xcassets */; };
 		E966649C22B15612004A23B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E966649A22B15612004A23B6 /* LaunchScreen.storyboard */; };
+		E96664A422B158AA004A23B6 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96664A322B158AA004A23B6 /* CustomCell.swift */; };
+		E96664A622B15B08004A23B6 /* QuoteBuilderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96664A522B15B08004A23B6 /* QuoteBuilderViewController.swift */; };
+		E96664A822B15FBD004A23B6 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96664A722B15FBD004A23B6 /* Quote.swift */; };
+		E96664AA22B15FC7004A23B6 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96664A922B15FC7004A23B6 /* Photo.swift */; };
+		E96664AC22B160C4004A23B6 /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96664AB22B160C4004A23B6 /* QuoteView.swift */; };
+		E96664AE22B16580004A23B6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96664AD22B16580004A23B6 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		E966649822B15612004A23B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E966649B22B15612004A23B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E966649D22B15612004A23B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E96664A322B158AA004A23B6 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		E96664A522B15B08004A23B6 /* QuoteBuilderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteBuilderViewController.swift; sourceTree = "<group>"; };
+		E96664A722B15FBD004A23B6 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		E96664A922B15FC7004A23B6 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		E96664AB22B160C4004A23B6 /* QuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
+		E96664AD22B16580004A23B6 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,12 @@
 			children = (
 				E966649122B15610004A23B6 /* AppDelegate.swift */,
 				E966649322B15610004A23B6 /* ViewController.swift */,
+				E96664A522B15B08004A23B6 /* QuoteBuilderViewController.swift */,
+				E96664A722B15FBD004A23B6 /* Quote.swift */,
+				E96664A922B15FC7004A23B6 /* Photo.swift */,
+				E96664A322B158AA004A23B6 /* CustomCell.swift */,
+				E96664AB22B160C4004A23B6 /* QuoteView.swift */,
+				E96664AD22B16580004A23B6 /* NetworkManager.swift */,
 				E966649522B15610004A23B6 /* Main.storyboard */,
 				E966649822B15612004A23B6 /* Assets.xcassets */,
 				E966649A22B15612004A23B6 /* LaunchScreen.storyboard */,
@@ -135,7 +153,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E96664AA22B15FC7004A23B6 /* Photo.swift in Sources */,
 				E966649422B15610004A23B6 /* ViewController.swift in Sources */,
+				E96664A422B158AA004A23B6 /* CustomCell.swift in Sources */,
+				E96664A622B15B08004A23B6 /* QuoteBuilderViewController.swift in Sources */,
+				E96664AE22B16580004A23B6 /* NetworkManager.swift in Sources */,
+				E96664AC22B160C4004A23B6 /* QuoteView.swift in Sources */,
+				E96664A822B15FBD004A23B6 /* Quote.swift in Sources */,
 				E966649222B15610004A23B6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,7 +307,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M2U5V49YFZ;
+				DEVELOPMENT_TEAM = WPKBU3MB67;
 				INFOPLIST_FILE = QuotePro/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -301,7 +325,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M2U5V49YFZ;
+				DEVELOPMENT_TEAM = WPKBU3MB67;
 				INFOPLIST_FILE = QuotePro/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
