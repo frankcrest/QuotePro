@@ -83,8 +83,17 @@ extension ViewController:UITableViewDelegate{
     let photoData = quote.value(forKey: "imageData") as? Data
     guard let photo = photoData else{return}
     let image = UIImage(data: photo)
-    let imageshare = [image!]
-    let uav = UIActivityViewController(activityItems: imageshare, applicationActivities: nil)
+    guard let quoteImage = image else{return}
+    
+    print(quote)
+    let quoteView = QuoteView()
+    quoteView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+    quoteView.imageView.image = quoteImage
+    quoteView.nameLabel.text = quote.value(forKeyPath: "author") as? String
+    quoteView.quoteLabel.text = quote.value(forKeyPath:"quote") as? String
+    quoteView.layoutIfNeeded()
+    let snapshot = quoteView.snapshot()
+    let uav = UIActivityViewController(activityItems: [snapshot], applicationActivities: nil)
     self.present(uav, animated: true, completion: nil)
   }
 }
@@ -107,4 +116,14 @@ extension ViewController:UITableViewDataSource{
     tableView.reloadData()
   }
   
+}
+
+extension UIView {
+  func snapshot() -> UIImage {
+    UIGraphicsBeginImageContextWithOptions(bounds.size, self.isOpaque, UIScreen.main.scale)
+    layer.render(in: UIGraphicsGetCurrentContext()!)
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return image!
+  }
 }

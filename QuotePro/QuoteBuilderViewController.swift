@@ -60,7 +60,7 @@ class QuoteBuilderViewController: UIViewController {
     self.view.addSubview(quoteView)
     
     NSLayoutConstraint.activate([
-      quoteView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0),
+      quoteView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
       quoteView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
       quoteView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
       quoteView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
@@ -95,6 +95,7 @@ class QuoteBuilderViewController: UIViewController {
     print("left swipe")
     
     netWorker.getQuote { (quote) in
+      print(quote)
       self.quote = quote
       DispatchQueue.main.async{
         self.quoteView.setupQuote(quote: quote)

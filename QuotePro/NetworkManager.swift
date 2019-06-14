@@ -24,7 +24,6 @@ class NetworkManager{
       }
       
       guard let data = data else { return }
-      
       let decoder = JSONDecoder()
       
       let quoteObject = try? decoder.decode(Quote.self, from: data)
@@ -38,7 +37,7 @@ class NetworkManager{
   {
     print(width)
     print(height)
-    let url = URL(string: "http://lorempixel.com/\(Int(width))/\(Int(height))")!
+    let url = URL(string: "https://source.unsplash.com/random/\(Int(width))x\(Int(height))")!
     
     let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
       if let error = error{

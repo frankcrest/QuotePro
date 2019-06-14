@@ -44,17 +44,17 @@ class QuoteView: UIView {
     self.addSubview(quoteLabel)
     
     NSLayoutConstraint.activate([
-      imageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 0),
+      imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
       imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
       imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
       imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
       
-      nameLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 200),
+      nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
       nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
       nameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
       nameLabel.heightAnchor.constraint(equalToConstant: 25),
       
-      quoteLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 240),
+      quoteLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 240),
       quoteLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
       quoteLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
       quoteLabel.heightAnchor.constraint(equalToConstant: 140)
@@ -66,6 +66,7 @@ class QuoteView: UIView {
   }
   
   func setupQuote(quote:Quote){
+    print(quote.quoteAuthor)
     nameLabel.text = quote.quoteAuthor
     quoteLabel.text = quote.quoteText
   }
